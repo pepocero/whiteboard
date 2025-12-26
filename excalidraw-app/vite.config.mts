@@ -83,10 +83,11 @@ export default defineConfig(({ mode }) => {
         scss: {
           quietDeps: true,
           silenceDeprecations: ["legacy-js-api", "import", "global-builtin", "mixed-decls"],
+          api: "modern-compiler",
         },
       },
     },
-    logLevel: "warn",
+    logLevel: "error",
     build: {
       outDir: "build",
       rollupOptions: {
@@ -115,14 +116,18 @@ export default defineConfig(({ mode }) => {
           },
         },
         onwarn(warning, warn) {
-          // Suppress Sass deprecation warnings
+          // Suppress Sass deprecation warnings and other non-critical warnings
           if (
             warning.message &&
             (warning.message.includes("deprecated") ||
               warning.message.includes("Dart Sass") ||
               warning.message.includes("map.get") ||
               warning.message.includes("@import") ||
-              warning.message.includes("transparentize"))
+              warning.message.includes("transparentize") ||
+              warning.message.includes("fade-out") ||
+              warning.message.includes("Global built-in functions") ||
+              warning.message.includes("Sass @import rules") ||
+              warning.message.includes("repetitive deprecation warnings"))
           ) {
             return;
           }
