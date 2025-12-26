@@ -4,9 +4,11 @@
   "installCommand": "yarn install",
   "framework": null,
   "nodeVersion": "18.x",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!_next|assets|fonts|locales|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],
