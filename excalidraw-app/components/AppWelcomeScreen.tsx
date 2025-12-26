@@ -26,7 +26,19 @@ export const AppWelcomeScreen: React.FC<{
       <WelcomeScreen.Hints.ToolbarHint />
       <WelcomeScreen.Hints.HelpHint />
       <WelcomeScreen.Center>
-        <WelcomeScreen.Center.Logo />
+        <WelcomeScreen.Center.Logo>
+          <div
+            style={{
+              fontSize: "3rem",
+              fontWeight: "bold",
+              color: "var(--color-primary)",
+              fontFamily: "var(--font-family)",
+              textAlign: "center",
+            }}
+          >
+            Whiteboard
+          </div>
+        </WelcomeScreen.Center.Logo>
         <WelcomeScreen.Center.Heading>
           {headingContent}
         </WelcomeScreen.Center.Heading>
