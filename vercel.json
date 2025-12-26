@@ -4,10 +4,20 @@
   "installCommand": "yarn install",
   "framework": null,
   "nodeVersion": "18.x",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/fonts/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000"
+      }
+    },
+    {
+      "src": "/(.*\\.(js|css|woff2|woff|ttf|eot|svg|png|jpg|jpeg|gif|ico|json))",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
   "headers": [
@@ -21,15 +31,6 @@
         {
           "key": "Referrer-Policy",
           "value": "origin"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/:path*.woff2",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000"
         }
       ]
     }

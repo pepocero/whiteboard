@@ -82,8 +82,11 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           quietDeps: true,
-          silenceDeprecations: ["legacy-js-api", "import", "global-builtin", "mixed-decls"],
+          silenceDeprecations: ["legacy-js-api", "import", "global-builtin", "mixed-decls", "slash-div"],
           api: "modern-compiler",
+          logger: {
+            warn: () => {}, // Suprimir todos los warnings de Sass
+          },
         },
       },
     },
