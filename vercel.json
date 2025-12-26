@@ -4,23 +4,31 @@
   "installCommand": "yarn install",
   "framework": null,
   "nodeVersion": "18.x",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/fonts/(.*)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000"
-      }
-    },
-    {
-      "src": "/(.*\\.(js|css|woff2|woff|ttf|eot|svg|png|jpg|jpeg|gif|ico|json))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

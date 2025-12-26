@@ -87,6 +87,7 @@ export default defineConfig(({ mode }) => {
           logger: {
             warn: () => {}, // Suprimir todos los warnings de Sass
           },
+          verbose: false,
         },
       },
     },
@@ -120,17 +121,20 @@ export default defineConfig(({ mode }) => {
         },
         onwarn(warning, warn) {
           // Suppress Sass deprecation warnings and other non-critical warnings
+          const message = warning.message || "";
           if (
-            warning.message &&
-            (warning.message.includes("deprecated") ||
-              warning.message.includes("Dart Sass") ||
-              warning.message.includes("map.get") ||
-              warning.message.includes("@import") ||
-              warning.message.includes("transparentize") ||
-              warning.message.includes("fade-out") ||
-              warning.message.includes("Global built-in functions") ||
-              warning.message.includes("Sass @import rules") ||
-              warning.message.includes("repetitive deprecation warnings"))
+            message.includes("deprecated") ||
+            message.includes("Dart Sass") ||
+            message.includes("map.get") ||
+            message.includes("@import") ||
+            message.includes("transparentize") ||
+            message.includes("fade-out") ||
+            message.includes("Global built-in functions") ||
+            message.includes("Sass @import rules") ||
+            message.includes("repetitive deprecation warnings") ||
+            message.includes("Sass's behavior for declarations") ||
+            message.includes("mixed-decls") ||
+            message.includes("sass warning:")
           ) {
             return;
           }
