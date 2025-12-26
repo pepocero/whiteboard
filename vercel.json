@@ -1,14 +1,14 @@
 {
   "buildCommand": "yarn install && yarn build",
   "outputDirectory": "excalidraw-app/build",
-  "installCommand": "",
+  "installCommand": "yarn install",
   "framework": null,
   "nodeVersion": "18.x",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],

@@ -1,5 +1,10 @@
 {
   "extends": ["@excalidraw/eslint-config", "react-app"],
+  "settings": {
+    "next": {
+      "rootDir": false
+    }
+  },
   "rules": {
     "import/order": [
       "warn",

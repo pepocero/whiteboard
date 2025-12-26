@@ -78,6 +78,15 @@ export default defineConfig(({ mode }) => {
         },
       ],
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          quietDeps: true,
+          silenceDeprecations: ["legacy-js-api", "import", "global-builtin", "mixed-decls"],
+        },
+      },
+    },
+    logLevel: "warn",
     build: {
       outDir: "build",
       rollupOptions: {
@@ -104,6 +113,20 @@ export default defineConfig(({ mode }) => {
               return `locales/${id.substring(index + 8)}`;
             }
           },
+        },
+        onwarn(warning, warn) {
+          // Suppress Sass deprecation warnings
+          if (
+            warning.message &&
+            (warning.message.includes("deprecated") ||
+              warning.message.includes("Dart Sass") ||
+              warning.message.includes("map.get") ||
+              warning.message.includes("@import") ||
+              warning.message.includes("transparentize"))
+          ) {
+            return;
+          }
+          warn(warning);
         },
       },
       sourcemap: true,
