@@ -76,6 +76,10 @@ export default defineConfig(({ mode }) => {
           find: /^@excalidraw\/utils\/(.*?)/,
           replacement: path.resolve(__dirname, "../packages/utils/src/$1"),
         },
+        {
+          find: /^excalidraw-app\/(.*)$/,
+          replacement: path.resolve(__dirname, "./$1"),
+        },
       ],
     },
     css: {
