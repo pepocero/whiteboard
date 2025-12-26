@@ -1,9 +1,11 @@
 {
-  "buildCommand": "yarn build",
+  "buildCommand": "yarn install && yarn build",
   "outputDirectory": "excalidraw-app/build",
-  "installCommand": "yarn install",
+  "installCommand": "",
   "framework": null,
   "nodeVersion": "18.x",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/(.*)",
@@ -25,7 +27,7 @@
       ]
     },
     {
-      "source": "/:file*.woff2",
+      "source": "/fonts/:path*.woff2",
       "headers": [
         {
           "key": "Cache-Control",
