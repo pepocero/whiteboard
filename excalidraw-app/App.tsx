@@ -84,7 +84,7 @@ import {
 } from "./app-jotai";
 import {
   FIREBASE_STORAGE_PREFIXES,
-  isExcalidrawPlusSignedUser,
+  isWhiteboardSignedUser,
   STORAGE_KEYS,
   SYNC_BROWSER_TABS_TIMEOUT,
 } from "./app_constants";
@@ -766,12 +766,7 @@ const ExcalidrawWrapper = () => {
     icon: <div style={{ width: 14 }}>{ExcalLogo}</div>,
     keywords: ["plus", "cloud", "server"],
     perform: () => {
-      window.open(
-        `${
-          import.meta.env.VITE_APP_PLUS_LP
-        }/plus?utm_source=excalidraw&utm_medium=app&utm_content=command_palette`,
-        "_blank",
-      );
+      // Excalidraw Plus link removed - no longer connecting to external services
     },
   };
   const ExcalidrawPlusAppCommand = {
@@ -789,12 +784,7 @@ const ExcalidrawWrapper = () => {
       "signup",
     ],
     perform: () => {
-      window.open(
-        `${
-          import.meta.env.VITE_APP_PLUS_APP
-        }?utm_source=excalidraw&utm_medium=app&utm_content=command_palette`,
-        "_blank",
-      );
+      // Excalidraw Plus link removed - no longer connecting to external services
     },
   };
 
@@ -1095,12 +1085,9 @@ const ExcalidrawWrapper = () => {
                 );
               },
             },
-            ...(isExcalidrawPlusSignedUser
+            ...(isWhiteboardSignedUser
               ? [
-                  {
-                    ...ExcalidrawPlusAppCommand,
-                    label: "Sign in / Go to Excalidraw+",
-                  },
+                  // Excalidraw Plus commands removed
                 ]
               : [ExcalidrawPlusCommand, ExcalidrawPlusAppCommand]),
 

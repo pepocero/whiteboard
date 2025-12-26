@@ -147,7 +147,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       Sitemap({
-        hostname: "https://excalidraw.com",
+        hostname: "https://whiteboard.carlinitools.com",
         outDir: "build",
         changefreq: "monthly",
         // its static in public folder

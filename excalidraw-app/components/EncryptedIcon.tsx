@@ -8,9 +8,11 @@ export const EncryptedIcon = () => {
   return (
     <a
       className="encrypted-icon tooltip"
-      href="https://plus.excalidraw.com/blog/end-to-end-encryption"
-      target="_blank"
-      rel="noopener"
+      href="#"
+      onClick={(e) => {
+        e.preventDefault();
+        // Encryption info - can be customized to point to your own documentation
+      }}
       aria-label={t("encrypted.link")}
     >
       <Tooltip label={t("encrypted.tooltip")} long={true}>

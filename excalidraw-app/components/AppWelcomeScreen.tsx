@@ -3,7 +3,7 @@ import { useI18n } from "@excalidraw/excalidraw/i18n";
 import { WelcomeScreen } from "@excalidraw/excalidraw/index";
 import React from "react";
 
-import { isExcalidrawPlusSignedUser } from "../app_constants";
+import { isWhiteboardSignedUser } from "../app_constants";
 
 export const AppWelcomeScreen: React.FC<{
   onCollabDialogOpen: () => any;
@@ -12,25 +12,8 @@ export const AppWelcomeScreen: React.FC<{
   const { t } = useI18n();
   let headingContent;
 
-  if (isExcalidrawPlusSignedUser) {
-    headingContent = t("welcomeScreen.app.center_heading_plus")
-      .split(/(Excalidraw\+)/)
-      .map((bit, idx) => {
-        if (bit === "Excalidraw+") {
-          return (
-            <a
-              style={{ pointerEvents: POINTER_EVENTS.inheritFromUI }}
-              href={`${
-                import.meta.env.VITE_APP_PLUS_APP
-              }?utm_source=excalidraw&utm_medium=app&utm_content=welcomeScreenSignedInUser`}
-              key={idx}
-            >
-              Excalidraw+
-            </a>
-          );
-        }
-        return bit;
-      });
+  if (isWhiteboardSignedUser) {
+    headingContent = t("welcomeScreen.app.center_heading");
   } else {
     headingContent = t("welcomeScreen.app.center_heading");
   }
@@ -43,14 +26,10 @@ export const AppWelcomeScreen: React.FC<{
       <WelcomeScreen.Hints.ToolbarHint />
       <WelcomeScreen.Hints.HelpHint />
       <WelcomeScreen.Center>
-        {isExcalidrawPlusSignedUser && (
-          <>
-            <WelcomeScreen.Center.Logo />
-            <WelcomeScreen.Center.Heading>
-              {headingContent}
-            </WelcomeScreen.Center.Heading>
-          </>
-        )}
+        <WelcomeScreen.Center.Logo />
+        <WelcomeScreen.Center.Heading>
+          {headingContent}
+        </WelcomeScreen.Center.Heading>
         <WelcomeScreen.Center.Menu>
           <WelcomeScreen.Center.MenuItemLoadScene />
           <WelcomeScreen.Center.MenuItemHelp />

@@ -6,7 +6,7 @@ import type { Theme } from "@excalidraw/element/types";
 import type { ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types";
 
 import { LanguageList } from "../app-language/LanguageList";
-import { isExcalidrawPlusSignedUser, logout } from "../app_constants";
+import { isWhiteboardSignedUser, logout } from "../app_constants";
 
 import { StickyNotesCreator } from "./StickyNotesCreator";
 
@@ -36,7 +36,7 @@ export const AppMainMenu: React.FC<{
       <MainMenu.DefaultItems.Help />
       <MainMenu.DefaultItems.ClearCanvas />
       <MainMenu.Separator />
-      {isExcalidrawPlusSignedUser ? (
+      {isWhiteboardSignedUser ? (
         <MainMenu.ItemCustom>
           <button
             onClick={() => {
@@ -79,17 +79,7 @@ export const AppMainMenu: React.FC<{
             <span>Cerrar sesión</span>
           </button>
         </MainMenu.ItemCustom>
-      ) : (
-        <MainMenu.ItemLink
-          icon={loginIcon}
-          href={`${
-            import.meta.env.VITE_APP_PLUS_APP || "https://plus.excalidraw.com"
-          }/sign-up?utm_source=signin&utm_medium=app&utm_content=hamburger`}
-          className="highlighted"
-        >
-          Sign up
-        </MainMenu.ItemLink>
-      )}
+      ) : null}
       <MainMenu.Separator />
       <MainMenu.DefaultItems.ToggleTheme
         allowSystemTheme

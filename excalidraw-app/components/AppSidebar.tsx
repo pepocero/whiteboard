@@ -39,15 +39,9 @@ export const AppSidebar = () => {
             }}
           />
           <div className="app-sidebar-promo-text">
-            Make comments with Excalidraw+
+            Make comments with Whiteboard
           </div>
-          <LinkButton
-            href={`${
-              import.meta.env.VITE_APP_PLUS_LP
-            }/plus?utm_source=excalidraw&utm_medium=app&utm_content=comments_promo#excalidraw-redirect`}
-          >
-            Sign up now
-          </LinkButton>
+          {/* Link removed - no longer connecting to external services */}
         </div>
       </Sidebar.Tab>
       <Sidebar.Tab tab="presentation" className="px-3">
@@ -63,15 +57,9 @@ export const AppSidebar = () => {
             }}
           />
           <div className="app-sidebar-promo-text">
-            Create presentations with Excalidraw+
+            Create presentations with Whiteboard
           </div>
-          <LinkButton
-            href={`${
-              import.meta.env.VITE_APP_PLUS_LP
-            }/plus?utm_source=excalidraw&utm_medium=app&utm_content=presentations_promo#excalidraw-redirect`}
-          >
-            Sign up now
-          </LinkButton>
+          {/* Link removed - no longer connecting to external services */}
         </div>
       </Sidebar.Tab>
     </DefaultSidebar>
