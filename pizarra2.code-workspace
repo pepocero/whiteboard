@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "Whiteboard (Root)"
+    }
+  ],
+  "settings": {
+    "git.autoRepositoryDetection": false,
+    "git.detectSubmodules": false,
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.git": false
+    }
+  }
+}
+
+
