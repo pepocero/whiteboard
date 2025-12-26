@@ -11,7 +11,8 @@ VITE_APP_DISABLE_SENTRY=true
 VITE_APP_ENABLE_TRACKING=false
 ```
 
-**Nota:** Con esta configuración mínima, tendrás:
+
+**Nota:** Con esta configuración mínima, tendrás sdaaasdasd:
 - ✅ Dibujo básico y guardado local
 - ✅ Exportar/importar archivos
 - ❌ Compartir enlaces (necesita backend)
