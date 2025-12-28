@@ -5,7 +5,7 @@
     position: absolute;
     top: 2.5rem;
     margin-top: 0.5rem;
-    max-width: 16rem;
+    max-width: 14rem;
 
     &--placement-top {
       top: auto;
@@ -20,7 +20,7 @@
 
       // When main menu is in the top toolbar, position relative to trigger
       &.main-menu-dropdown {
-        min-width: 232px;
+        min-width: 200px;
         margin-top: 0;
         margin-bottom: 0;
         max-height: 85vh !important;
@@ -28,7 +28,7 @@
         overflow: visible !important;
 
         @media screen and (orientation: landscape) {
-          max-width: 232px;
+          max-width: 200px;
           max-height: 75vh !important;
         }
 
