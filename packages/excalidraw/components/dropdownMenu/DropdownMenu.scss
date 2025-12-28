@@ -24,9 +24,8 @@
         margin-top: 0;
         margin-bottom: 0;
         max-height: 85vh !important;
-        display: flex !important;
-        flex-direction: column !important;
-        overflow: hidden !important;
+        display: block !important;
+        overflow: visible !important;
 
         @media screen and (orientation: landscape) {
           max-width: 232px;
