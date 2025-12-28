@@ -31,6 +31,7 @@ const MenuContent = ({
 }) => {
   const editorInterface = useEditorInterface();
   const menuRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const callbacksRef = useStable({ onClickOutside });
 
@@ -65,6 +66,44 @@ const MenuContent = ({
     };
   }, [callbacksRef]);
 
+  // Capturar eventos de scroll del mouse para prevenir que se propaguen al lienzo
+  useEffect(() => {
+    const container = containerRef.current;
+    const menu = menuRef.current;
+    if (!container || !menu) {
+      return;
+    }
+
+    const handleWheel = (event: WheelEvent) => {
+      // Verificar si el evento viene del menú o sus hijos
+      const target = event.target as Node;
+      if (!menu.contains(target)) {
+        return;
+      }
+
+      // Siempre prevenir que el scroll se propague al lienzo cuando está sobre el menú
+      event.stopPropagation();
+
+      // Verificar si el scroll puede continuar en el contenedor
+      const { scrollTop, scrollHeight, clientHeight } = container;
+      const canScrollDown = event.deltaY > 0 && scrollTop < scrollHeight - clientHeight - 1;
+      const canScrollUp = event.deltaY < 0 && scrollTop > 1;
+      const isScrollable = scrollHeight > clientHeight;
+
+      // Si no puede hacer scroll más, prevenir el comportamiento por defecto
+      if (isScrollable && !canScrollDown && !canScrollUp) {
+        event.preventDefault();
+      }
+      // Si puede hacer scroll, dejar que el navegador maneje el scroll normalmente
+    };
+
+    // Agregar el listener con capture para interceptar antes que otros handlers
+    menu.addEventListener("wheel", handleWheel, { passive: false, capture: true });
+    return () => {
+      menu.removeEventListener("wheel", handleWheel, { capture: true });
+    };
+  }, []);
+
   const classNames = clsx(`dropdown-menu ${className}`, {
     "dropdown-menu--mobile": editorInterface.formFactor === "phone",
     "dropdown-menu--placement-top": placement === "top",
@@ -82,11 +121,12 @@ const MenuContent = ({
     see https://github.com/excalidraw/excalidraw/pull/1445 */}
         {editorInterface.formFactor === "phone" ? (
           <Stack.Col
+            ref={containerRef}
             className="dropdown-menu-container"
             style={{
               maxHeight: "85vh",
-              height: "auto",
-              overflowY: "scroll",
+              height: "100%",
+              overflowY: "auto",
               overflowX: "hidden",
               minHeight: 0,
               WebkitOverflowScrolling: "touch",
