@@ -42,29 +42,20 @@
         padding: 8px 8px;
         box-sizing: border-box;
         max-height: 85vh !important;
-        height: 100% !important;
-        flex: 1 1 0 !important;
-        min-height: 0 !important;
         box-shadow: var(--shadow-island);
         border-radius: var(--border-radius-lg);
         position: relative;
         transition: box-shadow 0.5s ease-in-out;
-        display: flex !important;
-        flex-direction: column !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        min-height: 0 !important;
         // Forzar scrollbar siempre visible cuando hay overflow
         scrollbar-width: thin !important;
         scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1) !important;
 
-        // Asegurar que Stack.Col dentro del contenedor respete la altura
+        // Asegurar que Stack.Col dentro del contenedor crezca naturalmente
         .Stack {
-          min-height: 0 !important;
-          max-height: none !important;
-          height: auto !important;
-          overflow: visible !important;
-          flex: 0 0 auto !important;
+          min-height: 0;
+          overflow: visible;
         }
 
         // Webkit browsers (Chrome, Safari, Edge) - scrollbar siempre visible y funcional
