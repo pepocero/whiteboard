@@ -26,7 +26,7 @@
         max-height: 85vh !important;
         display: flex !important;
         flex-direction: column !important;
-        overflow: visible !important;
+        overflow: hidden !important;
 
         @media screen and (orientation: landscape) {
           max-width: 232px;
@@ -42,14 +42,14 @@
         padding: 8px 8px;
         box-sizing: border-box;
         max-height: 85vh !important;
-        height: 100% !important;
+        height: auto !important;
         box-shadow: var(--shadow-island);
         border-radius: var(--border-radius-lg);
         position: relative;
         transition: box-shadow 0.5s ease-in-out;
         display: flex !important;
         flex-direction: column !important;
-        overflow-y: scroll !important;
+        overflow-y: auto !important;
         overflow-x: hidden !important;
         min-height: 0 !important;
         // Forzar scrollbar siempre visible cuando hay overflow
@@ -58,9 +58,11 @@
 
         // Asegurar que Stack.Col dentro del contenedor respete la altura
         .Stack {
-          min-height: 0;
-          max-height: 100%;
-          overflow: visible;
+          min-height: 0 !important;
+          max-height: none !important;
+          height: auto !important;
+          overflow: visible !important;
+          flex: 0 0 auto !important;
         }
 
         // Webkit browsers (Chrome, Safari, Edge) - scrollbar siempre visible y funcional
