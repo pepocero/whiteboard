@@ -48,7 +48,7 @@
         overflow-y: auto !important;
         overflow-x: hidden !important;
         // Forzar scrollbar siempre visible cuando hay overflow
-        scrollbar-width: thin !important;
+        scrollbar-width: auto !important;
         scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1) !important;
 
         // Asegurar que Stack.Col dentro del contenedor crezca naturalmente
