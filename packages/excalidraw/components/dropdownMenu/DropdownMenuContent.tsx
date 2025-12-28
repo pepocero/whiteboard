@@ -125,7 +125,8 @@ const MenuContent = ({
             className="dropdown-menu-container"
             style={{
               maxHeight: "85vh",
-              height: "auto",
+              height: "100%",
+              flex: "1 1 0",
               overflowY: "auto",
               overflowX: "hidden",
               minHeight: 0,
