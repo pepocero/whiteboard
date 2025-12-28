@@ -81,7 +81,18 @@ const MenuContent = ({
         {/* the zIndex ensures this menu has higher stacking order,
     see https://github.com/excalidraw/excalidraw/pull/1445 */}
         {editorInterface.formFactor === "phone" ? (
-          <Stack.Col className="dropdown-menu-container">{children}</Stack.Col>
+          <Stack.Col
+            className="dropdown-menu-container"
+            style={{
+              maxHeight: "85vh",
+              height: "100%",
+              overflowY: "scroll",
+              overflowX: "hidden",
+              minHeight: 0,
+            }}
+          >
+            {children}
+          </Stack.Col>
         ) : (
           <Island
             className="dropdown-menu-container"

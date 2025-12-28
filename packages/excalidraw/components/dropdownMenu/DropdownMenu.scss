@@ -23,51 +23,70 @@
         min-width: 232px;
         margin-top: 0;
         margin-bottom: 0;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
 
         @media screen and (orientation: landscape) {
           max-width: 232px;
+          max-height: 75vh;
+        }
+
+        @media screen and (max-height: 600px) {
+          max-height: 70vh;
         }
       }
 
       .dropdown-menu-container {
         padding: 8px 8px;
         box-sizing: border-box;
-        max-height: calc(
-          100svh - var(--editor-container-padding) * 2 - 2.25rem
-        );
+        max-height: 85vh;
+        height: 100%;
         box-shadow: var(--shadow-island);
         border-radius: var(--border-radius-lg);
         position: relative;
         transition: box-shadow 0.5s ease-in-out;
         display: flex;
         flex-direction: column;
-        overflow-y: scroll;
+        overflow-y: scroll !important;
         overflow-x: hidden;
+        min-height: 0;
         // Forzar scrollbar siempre visible cuando hay overflow
-        scrollbar-width: auto;
+        scrollbar-width: auto !important;
         scrollbar-color: var(--scrollbar-thumb) transparent;
+
+        // Asegurar que Stack.Col dentro del contenedor respete la altura
+        .Stack {
+          min-height: 0;
+          max-height: 100%;
+          overflow: visible;
+        }
 
         // Webkit browsers (Chrome, Safari, Edge) - scrollbar siempre visible
         &::-webkit-scrollbar {
-          width: 10px;
+          width: 10px !important;
           display: block !important;
           -webkit-appearance: none;
+          visibility: visible !important;
         }
 
         &::-webkit-scrollbar-track {
           background: rgba(0, 0, 0, 0.05);
           border-radius: 5px;
+          visibility: visible !important;
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: var(--scrollbar-thumb);
+          background-color: var(--scrollbar-thumb) !important;
           border-radius: 5px;
           border: 1px solid transparent;
           background-clip: padding-box;
+          visibility: visible !important;
         }
 
         &::-webkit-scrollbar-thumb:hover {
-          background-color: var(--scrollbar-thumb-hover);
+          background-color: var(--scrollbar-thumb-hover) !important;
         }
 
         &.zen-mode {
