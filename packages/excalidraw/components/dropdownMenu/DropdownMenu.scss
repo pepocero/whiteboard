@@ -42,7 +42,7 @@
         padding: 8px 8px;
         box-sizing: border-box;
         max-height: 85vh !important;
-        height: auto !important;
+        height: 100% !important;
         box-shadow: var(--shadow-island);
         border-radius: var(--border-radius-lg);
         position: relative;
@@ -53,8 +53,8 @@
         overflow-x: hidden !important;
         min-height: 0 !important;
         // Forzar scrollbar siempre visible cuando hay overflow
-        scrollbar-width: auto !important;
-        scrollbar-color: var(--scrollbar-thumb) transparent;
+        scrollbar-width: thin !important;
+        scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1) !important;
 
         // Asegurar que Stack.Col dentro del contenedor respete la altura
         .Stack {
@@ -63,30 +63,60 @@
           overflow: visible;
         }
 
-        // Webkit browsers (Chrome, Safari, Edge) - scrollbar siempre visible
+        // Webkit browsers (Chrome, Safari, Edge) - scrollbar siempre visible y funcional
         &::-webkit-scrollbar {
-          width: 10px !important;
+          width: 12px !important;
           display: block !important;
-          -webkit-appearance: none;
+          -webkit-appearance: none !important;
           visibility: visible !important;
+          opacity: 1 !important;
         }
 
         &::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.05);
-          border-radius: 5px;
+          background: rgba(0, 0, 0, 0.1) !important;
+          border-radius: 6px !important;
           visibility: visible !important;
+          opacity: 1 !important;
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: var(--scrollbar-thumb) !important;
-          border-radius: 5px;
-          border: 1px solid transparent;
-          background-clip: padding-box;
+          background-color: rgba(0, 0, 0, 0.5) !important;
+          border-radius: 6px !important;
+          border: 2px solid transparent !important;
+          background-clip: padding-box !important;
           visibility: visible !important;
+          opacity: 1 !important;
+          cursor: pointer !important;
+          min-height: 30px !important;
         }
 
         &::-webkit-scrollbar-thumb:hover {
-          background-color: var(--scrollbar-thumb-hover) !important;
+          background-color: rgba(0, 0, 0, 0.7) !important;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+          background-color: rgba(0, 0, 0, 0.8) !important;
+        }
+
+        // Estilos para tema oscuro
+        @at-root .excalidraw.theme--dark & {
+          scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1) !important;
+
+          &::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1) !important;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.4) !important;
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.6) !important;
+          }
+
+          &::-webkit-scrollbar-thumb:active {
+            background-color: rgba(255, 255, 255, 0.7) !important;
+          }
         }
 
         &.zen-mode {
