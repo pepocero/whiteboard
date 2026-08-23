@@ -14,6 +14,45 @@
     margin-inline-start: auto;
   }
 
+  .app-credits {
+    margin: 0;
+    max-width: 26rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--border-radius-md);
+    background-color: var(--island-bg-color);
+    box-shadow: 0 0 0 1px var(--color-surface-lowest);
+    font-family: var(--ui-font);
+    font-size: 0.6875rem;
+    line-height: 1.35;
+    color: var(--color-gray-60);
+    text-align: left;
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &--menu {
+      max-width: none;
+      margin: 0.25rem 0.5rem 0.5rem;
+    }
+  }
+
+  &.theme--dark .app-credits {
+    color: var(--color-gray-40);
+  }
+
+  @media (max-width: 1100px) {
+    .app-credits--footer {
+      max-width: 16rem;
+    }
+  }
+
   .encrypted-icon {
     border-radius: var(--space-factor);
     color: var(--color-primary);

@@ -8,6 +8,7 @@ import type { ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types";
 import { LanguageList } from "../app-language/LanguageList";
 import { isWhiteboardSignedUser, logout } from "../app_constants";
 
+import { AppCredits } from "./AppFooter";
 import { StickyNotesCreator } from "./StickyNotesCreator";
 
 export const AppMainMenu: React.FC<{
@@ -91,6 +92,10 @@ export const AppMainMenu: React.FC<{
       </MainMenu.ItemCustom>
       <MainMenu.DefaultItems.ChangeCanvasBackground />
       <StickyNotesCreator excalidrawAPI={props.excalidrawAPI} />
+      <MainMenu.Separator />
+      <MainMenu.ItemCustom>
+        <AppCredits variant="menu" />
+      </MainMenu.ItemCustom>
     </MainMenu>
   );
 });
